@@ -16,7 +16,6 @@
 
 package griffon.builder.swingxtras.factory
 
-import groovy.swing.SwingBuilder
 import org.codehaus.groovy.runtime.InvokerHelper
 
 import javax.swing.JComponent
@@ -58,7 +57,7 @@ class BalloonTipFactory extends AbstractFactory {
          throw new RuntimeException("In $name you must specify an attribute component: or supply a JComponent as value")
       }
 
-      builder.context.widgetId = attributes.remove(builder.getAt(SwingBuilder.DELEGATE_PROPERTY_OBJECT_ID) ?: SwingBuilder.DEFAULT_DELEGATE_PROPERTY_OBJECT_ID)
+      builder.context.widgetId = attributes.remove('id')
 
       // force GStrings to be evalluated by calling toString()
       def balloonTip = newBalloonTip(builder, name, component, text.toString(), attributes)
